@@ -1,0 +1,28 @@
+{
+	"name": "why-lagging",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "concurrently --names api,ui -c cyan,magenta \"bun run dev:api\" \"bun run dev:ui\"",
+		"dev:api": "bun --watch src/server/index.ts",
+		"dev:ui": "vite --config src/ui/vite.config.ts",
+		"start": "bun src/server/index.ts",
+		"build": "vue-tsc --noEmit -p src/ui/tsconfig.json && vite build --config src/ui/vite.config.ts",
+		"test": "vitest run --config vitest.config.ts",
+		"typecheck": "tsc --noEmit -p tsconfig.json && vue-tsc --noEmit -p src/ui/tsconfig.json"
+	},
+	"dependencies": {
+		"vue": "^3.5.13",
+		"vue-router": "^4.5.0"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.2.4",
+		"@vitejs/plugin-vue": "^5.2.1",
+		"concurrently": "^9.2.1",
+		"typescript": "^5.8.2",
+		"vite": "^6.2.0",
+		"vitest": "^3.0.8",
+		"vue-tsc": "^2.2.8"
+	}
+}
